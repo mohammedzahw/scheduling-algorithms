@@ -59,8 +59,6 @@ public class ListInputGUI {
                     head = Integer.parseInt(headField.getText().trim());
                     N = Integer.parseInt(NField.getText().trim());
                     limit = Integer.parseInt(limitField.getText().trim());
-                    // cylindersField.setText("");
-                    // headField.setText("");
 
                     /********************* */
 
@@ -72,13 +70,7 @@ public class ListInputGUI {
                     process.right = rightButton.isSelected();
                     process.head = head;
                     process.cylinders = cylinders;
-                    // System.out.println("cylinders " + process.cylinders);
-                    // System.out.println("head " + process.head);
-                    // System.out.println("left " + process.left);
-                    // System.out.println("right " + process.right);
-                    // System.out.println("algorithm " + process.algorithm);
                     process.run();
-                    // System.out.println("cylinders " + process.cylinders);
                     /****************************** */
 
                     frame2.setTitle(process.algorithm);
@@ -124,9 +116,7 @@ public class ListInputGUI {
         comboBoxPanel.add(new JLabel("Algorithm:"));
         comboBoxPanel.add(comboBox);
         frame.add(comboBoxPanel);
-
         frame.add(button);
-        // frame.add(new JScrollPane(textArea));
 
         frame.setVisible(true);
     }
