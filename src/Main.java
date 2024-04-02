@@ -3,8 +3,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //new ListOutputGUI();
-        new ListInputGUI();
+        // new ListOutputGUI();
+        new InputGUI();
 
     }
 }

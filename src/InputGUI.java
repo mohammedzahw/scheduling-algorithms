@@ -14,7 +14,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class ListInputGUI {
+public class InputGUI {
     private JTextField cylindersField, headField, limitField, NField;
     private JTextArea textArea;
     private ArrayList<Integer> cylinders;
@@ -22,7 +22,7 @@ public class ListInputGUI {
     private JRadioButton leftButton, rightButton;
     private JComboBox<String> comboBox;
 
-    public ListInputGUI() {
+    public InputGUI() {
         cylinders = new ArrayList<>();
 
         JFrame frame = new JFrame("List Input GUI");
