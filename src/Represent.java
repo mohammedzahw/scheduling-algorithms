@@ -11,15 +11,9 @@ import java.util.List;
 import javax.swing.JPanel;
 
 public class Represent extends JPanel {
-    int limit;
-    List<Integer> cord = new ArrayList<>();
+    public int limit;
+    public List<Integer> cord = new ArrayList<>();
     int marg = 50;
-
-    public Represent(List<Integer> cord, int limit) {
-        this.cord = cord;
-        this.limit = limit;
-
-    }
 
     protected void paintComponent(Graphics grf) {
 
@@ -50,7 +44,7 @@ public class Represent extends JPanel {
 
         double x0 = marg, y0 = marg;
         for (int i = 0; i < cord.size(); i++) {
-            double y1 = marg + i * limit / 2;
+            double y1 = marg + i * 20;
             double x1 = marg + cord.get(i) * x;
             graph.fill(new Ellipse2D.Double(x1 - 2, y1 - 2, 4, 4));
             graph.draw(new Line2D.Double(x0, y0, x1, y1)); // Draw a line between the two points

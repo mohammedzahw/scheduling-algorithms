@@ -45,6 +45,8 @@ public class InputGUI {
 
         comboBox = new JComboBox<>(new String[] { "FCFS", "SSTF", "SCAN", "C-SCAN", "LOOK", "C-LOOK", "N-Step SCAN" });
         JFrame frame2 = new JFrame();
+        Process process = new Process();
+        Represent represent = new Represent();
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,20 +64,22 @@ public class InputGUI {
 
                     /********************* */
 
-                    Process process = new Process();
                     process.limit = limit;
                     process.N = N;
                     process.algorithm = (String) comboBox.getSelectedItem();
                     process.left = leftButton.isSelected();
                     process.right = rightButton.isSelected();
                     process.head = head;
-                    process.cylinders = cylinders;
+                    process.cylinder = cylinders;
                     process.run();
+
                     /****************************** */
 
+                    represent.cord = process.cylinder;
+                    represent.limit = limit;
                     frame2.setTitle(process.algorithm);
                     frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    frame2.add(new Represent(process.cylinders, limit));
+                    frame2.add(represent);
                     frame2.setSize(1200, 1200);
                     frame2.setLocationRelativeTo(null);
                     frame2.setVisible(true);
@@ -116,7 +120,9 @@ public class InputGUI {
         comboBoxPanel.add(new JLabel("Algorithm:"));
         comboBoxPanel.add(comboBox);
         frame.add(comboBoxPanel);
+
         frame.add(button);
+        // frame.add(new JScrollPane(textArea));
 
         frame.setVisible(true);
     }

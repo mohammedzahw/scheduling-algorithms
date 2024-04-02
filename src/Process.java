@@ -9,7 +9,7 @@ public class Process {
     boolean dir = false;
     int limit = 40;
     int N = 10;
-    List<Integer> cylinders = new ArrayList<>();
+    List<Integer> cylinder = new ArrayList<>();
 
     void run() {
 
@@ -21,27 +21,27 @@ public class Process {
 
         switch (algorithm) {
             case "FCFS":
-                cylinders = algorithms.fcfs(cylinders, head);
+                cylinder = algorithms.fcfs(cylinder, head);
                 break;
             case "SSTF":
-                cylinders = algorithms.sstf(cylinders, head);
+                cylinder = algorithms.sstf(cylinder, head);
                 break;
             case "SCAN":
-                cylinders = algorithms.scan(cylinders, head, dir);
+                cylinder = algorithms.scan(cylinder, head, dir);
                 break;
 
             case "C-SCAN":
-                cylinders = algorithms.c_scan(cylinders, head, dir);
+                cylinder = algorithms.c_scan(cylinder, head, dir);
                 break;
             case "LOOK":
-                cylinders = algorithms.look(cylinders, head, dir);
+                cylinder = algorithms.look(cylinder, head, dir);
                 break;
 
             case "C-LOOK":
-                cylinders = algorithms.c_look(cylinders, head, dir);
+                cylinder = algorithms.c_look(cylinder, head, dir);
                 break;
             case "N-Step SCAN":
-                cylinders = algorithms.n_scan(cylinders, head, N, dir);
+                cylinder = algorithms.n_scan(cylinder, head, N, dir);
                 break;
         }
 
