@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/osproject.iml" filepath="$PROJECT_DIR$/.idea/osproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scheduling-algorithms.iml" filepath="$PROJECT_DIR$/scheduling-algorithms.iml" />
     </modules>
   </component>
 </project>

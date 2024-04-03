@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -6,7 +7,7 @@ public class Algorithms {
     public int limit = 40;
 
     public List<Integer> scan(List<Integer> cylinders, int head, boolean dir) {
-        // System.out.println("dir " + dir);
+
         List<Integer> temp = new ArrayList<>();
         List<Integer> left = new ArrayList<>();
         List<Integer> right = new ArrayList<>();
@@ -20,8 +21,8 @@ public class Algorithms {
                 temp.add(integer);
         }
 
-        Collections.sort(left.subList(0, left.size()), Collections.reverseOrder());
-        Collections.sort(right.subList(0, right.size()));
+        left.sort(Collections.reverseOrder());
+        Collections.sort(right);
         if (right.isEmpty() || right.getLast() != limit)
             right.addLast(limit);
 
@@ -35,6 +36,7 @@ public class Algorithms {
             temp.addAll(left);
             temp.addAll(right);
         }
+
 
         return temp;
 
@@ -53,8 +55,8 @@ public class Algorithms {
             else
                 temp.add(integer);
         }
-        Collections.sort(left.subList(0, left.size()), Collections.reverseOrder());
-        Collections.sort(right.subList(0, right.size()));
+        left.sort(Collections.reverseOrder());
+        Collections.sort(right);
         if (dir) {
             temp.addAll(right);
             temp.addAll(left);
@@ -68,7 +70,7 @@ public class Algorithms {
     }
 
     public List<Integer> fcfs(List<Integer> cylinders, int head) {
-        cylinders.add(0, head);
+        cylinders.addFirst(head);
         return cylinders;
     }
 
@@ -87,19 +89,19 @@ public class Algorithms {
                 temp.add(integer);
         }
 
-        Collections.sort(left.subList(0, left.size()), Collections.reverseOrder());
-        Collections.sort(right.subList(0, right.size()));
+        left.sort(Collections.reverseOrder());
+        Collections.sort(right);
 
         while (!left.isEmpty() && !right.isEmpty()) {
 
-            if (head - left.get(0) < right.get(0) - head) {
-                temp.add(left.get(0));
-                head = left.get(0);
-                left.remove(0);
+            if (head - left.getFirst() < right.getFirst() - head) {
+                temp.add(left.getFirst());
+                head = left.getFirst();
+                left.removeFirst();
             } else {
-                temp.add(right.get(0));
-                head = right.get(0);
-                right.remove(0);
+                temp.add(right.getFirst());
+                head = right.getFirst();
+                right.removeFirst();
             }
 
         }
@@ -110,36 +112,40 @@ public class Algorithms {
         return temp;
     }
 
-    public List<Integer> c_scan(List<Integer> cylinders, int head, boolean dir) {
+    public List<Integer> c_scan(List<Integer> cylinders, Integer head, boolean dir) {
 
-        List<Integer> temp = new ArrayList<>();
-        List<Integer> left = new ArrayList<>();
-        List<Integer> right = new ArrayList<>();
-        temp.add(head);
-        for (Integer integer : cylinders) {
-            if (integer < head)
-                left.add(integer);
-            else if (integer > head)
-                right.add(integer);
-            else
-                temp.add(integer);
-        }
-        Collections.sort(left.subList(0, left.size()));
-        Collections.sort(right.subList(0, right.size()));
-        if (right.getLast() != limit)
-            right.addLast(limit);
-        if (left.getFirst() != 0)
-            left.addFirst(0);
-        if (dir) {
-            temp.addAll(right);
-            temp.addAll(left);
+         List<Integer> temp = new ArrayList<>();
+         List<Integer> left = new ArrayList<>();
+         List<Integer> right = new ArrayList<>();
+         temp.add(head);
+         for (Integer integer : cylinders) {
+         if (integer < head)
+         left.add(integer);
+         else if (integer > head)
+         right.add(integer);
+         else
+         temp.add(integer);
+         }
+         Collections.sort(left);
+         Collections.sort(right);
+         if (right.isEmpty() || right.getLast() != limit)
+          right.addLast(limit);
 
-        } else {
-            temp.addAll(left.reversed());
-            temp.addAll(right.reversed());
-        }
+         if (left.isEmpty() || left.getFirst() != 0)
+          left.addFirst(0);
 
+         if (dir) {
+         temp.addAll(right);
+         temp.addAll(left);
+
+         } else {
+         temp.addAll(left.reversed());
+         temp.addAll(right.reversed());
+         }
+
+         temp.removeLast();
         return temp;
+
 
     }
 
@@ -157,8 +163,9 @@ public class Algorithms {
             else
                 temp.add(integer);
         }
-        Collections.sort(left.subList(0, left.size()));
-        Collections.sort(right.subList(0, right.size()));
+        Collections.sort(left);
+        Collections.sort(right);
+
         if (dir) {
             temp.addAll(right);
             temp.addAll(left);
@@ -172,7 +179,7 @@ public class Algorithms {
     }
 
     public List<Integer> n_scan(List<Integer> cylinders, int head, int n, boolean dir) {
-        System.out.println("dir " + dir);
+
 
         List<Integer> temp = new ArrayList<>();
         List<Integer> temp2 = new ArrayList<>();
@@ -185,13 +192,14 @@ public class Algorithms {
         }
         // Service each sublist in the current direction, then reverse the direction
         for (List<Integer> sublist : sublists) {
-            System.out.println(sublist);
 
             temp2 = scan(sublist, head, dir);
             System.out.println(temp2);
             head = temp2.getLast();
-            temp.addAll(temp2.subList(0, temp2.size() - 1));
+            temp2.removeLast();
+            temp.addAll(temp2);
         }
+        temp.removeLast();
 
         return temp;
     }

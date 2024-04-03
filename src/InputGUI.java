@@ -74,7 +74,6 @@ public class InputGUI {
                     process.run();
 
                     /****************************** */
-                    System.out.println("cylinder: " + process.cylinder);
 
                     represent.cord = process.cylinder;
                     represent.limit = limit;

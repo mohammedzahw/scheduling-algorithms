@@ -15,6 +15,7 @@ public class Process {
 
         Algorithms algorithms = new Algorithms();
         algorithms.limit = limit;
+        System.out.println(algorithm);
 
         if (right)
             dir = true;
