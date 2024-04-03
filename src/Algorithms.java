@@ -6,6 +6,7 @@ public class Algorithms {
     public int limit = 40;
 
     public List<Integer> scan(List<Integer> cylinders, int head, boolean dir) {
+        // System.out.println("dir " + dir);
         List<Integer> temp = new ArrayList<>();
         List<Integer> left = new ArrayList<>();
         List<Integer> right = new ArrayList<>();
@@ -21,9 +22,10 @@ public class Algorithms {
 
         Collections.sort(left.subList(0, left.size()), Collections.reverseOrder());
         Collections.sort(right.subList(0, right.size()));
-        if (!right.isEmpty() && right.getLast() != limit)
+        if (right.isEmpty() || right.getLast() != limit)
             right.addLast(limit);
-        if (!left.isEmpty() && left.getLast() != 0)
+
+        if (left.isEmpty() || left.getLast() != 0)
             left.addLast(0);
         if (dir) {
             temp.addAll(right);
@@ -170,6 +172,7 @@ public class Algorithms {
     }
 
     public List<Integer> n_scan(List<Integer> cylinders, int head, int n, boolean dir) {
+        System.out.println("dir " + dir);
 
         List<Integer> temp = new ArrayList<>();
         List<Integer> temp2 = new ArrayList<>();
@@ -182,11 +185,12 @@ public class Algorithms {
         }
         // Service each sublist in the current direction, then reverse the direction
         for (List<Integer> sublist : sublists) {
+            System.out.println(sublist);
 
             temp2 = scan(sublist, head, dir);
+            System.out.println(temp2);
             head = temp2.getLast();
             temp.addAll(temp2.subList(0, temp2.size() - 1));
-
         }
 
         return temp;

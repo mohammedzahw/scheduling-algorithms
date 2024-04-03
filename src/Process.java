@@ -18,6 +18,8 @@ public class Process {
 
         if (right)
             dir = true;
+        else
+            dir = false;
 
         switch (algorithm) {
             case "FCFS":
